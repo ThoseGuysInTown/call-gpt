@@ -11,12 +11,14 @@ async function makeInboundCall() {
   const client = require('twilio')(accountSid, authToken);
   
   let twiml = new VoiceResponse();
-  twiml.pause({ length: 10 });
-  twiml.say('Which models of airpods do you have available right now?');
-  twiml.pause({ length: 30 });
+  twiml.pause({ length: 2 });
+  twiml.say('Hello! Thank you this is Kevin, I\'m needing help with my father who has been struggling with his medication adherence lately.');
+  twiml.pause({ length: 3 });
+  twiml.say('Can I schedule a meeting to discuss some options?');
   twiml.hangup();
 
   console.log(twiml.toString());
+  console.log(process.env.APP_NUMBER);
   
   await client.calls
     .create({
